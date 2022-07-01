@@ -55,7 +55,21 @@ function randWord(array)
 //     console.log(firstWord);
 // }
 
-console.log(randWord(words));
+// ------------- beginning code for to create tags and seperate letters -------------------
+
+const hiddenWord = document.querySelector('#hidden-word');
+let dividedWord = randWord(words).split('');
+
+for (let i in dividedWord)
+{
+    let letters = document.createElement('p');
+    letters.classList.add('invisible-word');
+    letters.textContent = dividedWord[i].toLocaleUpperCase();
+
+    hiddenWord.appendChild(letters);
+}
+
+
 
 
 
