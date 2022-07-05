@@ -121,13 +121,24 @@
     line-height: 0px;
 }
 
-.invisible-word {
+.div-guess {
+    position: absolute;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    /* border-bottom: solid 1px black;   */
+}
+
+.guess {
     height: 30px;
     width: 50px;
     text-align: center;
     margin: 0 2% 4% 0;
-    color: transparent;
     border-bottom: solid 1px black;  
+}
+
+.invisible-word {
+    color: transparent;
 }
 
 .successful {
@@ -141,18 +152,14 @@
 
 #fail-word {
     position: relative;
+    height: 35px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    top: 9%;
+    text-align: center;
+    letter-spacing: 0.7em;
+    top: 18%;
     font-size: 30px;
-}
-
-.fail {
-    margin-right: 3%;
-    background: none;
-    border: none;
-    outline: none;
 }
 
 .buttons-game {
@@ -160,5 +167,5 @@
     display: flex;
     flex-direction:row;
     justify-content: center;
-    top: 18%;
+    top: 30%;
 }
