@@ -2,6 +2,14 @@
 const canvas = document.querySelector('canvas'), 
       context = canvas.getContext('2d');
 
+//draw head
+function drawHead()
+{
+    context.beginPath();
+    context.arc(360,50,20,0,2*Math.PI);
+    context.stroke();
+}      
+
 //draw lines
 function draw(xi,yi,xf,yf) 
 {
@@ -16,16 +24,6 @@ draw(200,199,400,199); //base
 draw(230,200,230,0); //pole
 draw(230,1,360,1); //ceiling
 draw(360,0,360,30); //rope
-draw(360,70,360,130); //body
-draw(360,130,380,170); //right leg
-draw(360,130,340,170); //left leg
-draw(360,80,380,120); //right arm
-draw(360,80,340,120); //left arm
-
-//draw head
-context.beginPath();
-context.arc(360,50,20,0,2*Math.PI);
-context.stroke();
 
 //---------------------- beginning code for words --------------------
 
@@ -74,17 +72,19 @@ for (let i in dividedWord) //creating a div for each letter of the word to guess
     hiddenWord.appendChild(divLetters); //putting divLetters div in hiddenWord div
 }
 
-// ---------------- beginning code for wrong letters ----------------
+// ------------- beginning code for incorrect letters and for drawing body parts --------------
 
 const $html = document.querySelector('html'); //getting all html elements
 const guess = document.querySelectorAll('.guess'); // getting all created div
-const failWord = document.querySelector('#fail-word'); // getting the div were the wrong letter will go 
+const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
+let lives= 6; // number of lives in the game
 
 // adding a event listener for the html
 $html.addEventListener('keyup', (event) => {
     let inputText = (event.key).toLocaleUpperCase(); // capturing the keyboard
     const pattern = new RegExp('^[A-Z]$'); // creating a regex pattern for the keyboard
     let exist = false; // checking if letter dont exist in the word to guess
+
     for (let i in result) // loop for check the letter in the word to guess
     {
         if (result[i].includes(inputText)) // checking if the pressed character is in the word to guess
@@ -98,7 +98,31 @@ $html.addEventListener('keyup', (event) => {
     {
         if (pattern.test(inputText)) // checking if the pressed character is in the regex pattern
         {
-            failWord.textContent += inputText; // writing the letter failed in the div 
+            failWord.textContent += inputText; // writing the letter failed in the div
+            switch (lives){ // drawing body parts according to lives 
+                case 6:
+                    drawHead(); // draw head
+                    break;
+                case 5:
+                    draw(360,70,360,130); // draw body
+                    break;
+                case 4:
+                    draw(360,130,380,170); // draw right leg
+                    break;
+                case 3:
+                    draw(360,130,340,170); // draw left leg
+                    break;
+                case 2:
+                    draw(360,80,380,120); // draw right arm
+                    break;
+                case 1:
+                    draw(360,80,340,120); // draw left arm
+                    break;
+                case 0:
+                    draw(320,70,400,70); // dead
+                    break;
+            }
+            lives--; // decrease the number of lives by 1
         }
     } 
 });
