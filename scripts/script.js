@@ -69,7 +69,7 @@ for (let i in dividedWord) //creating a div for each letter of the word to guess
     divLetters.textContent = dividedWord[i].toLocaleUpperCase(); //assigning the content to the div... the content is the separate word
     result.push(dividedWord[i].toLocaleUpperCase()); //adding the content in a variable outside
 
-    hiddenWord.appendChild(divLetters); //putting divLetters div in hiddenWord div
+    hiddenWord.appendChild(divLetters); //putting divLetters div into hiddenWord div
 }
 
 // ------------- beginning code for incorrect letters and for drawing body parts --------------
@@ -79,8 +79,8 @@ const guess = document.querySelectorAll('.guess'); // getting all created div
 const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
 let lives= 6; // number of lives in the game
 
-// adding a event listener for the html
-$html.addEventListener('keyup', (event) => {
+// function to guess word and show wrong letters
+const guessWord = (event) => {
     let inputText = (event.key).toLocaleUpperCase(); // capturing the keyboard
     const pattern = new RegExp('^[A-Z]$'); // creating a regex pattern for the keyboard
     let exist = false; // checking if letter dont exist in the word to guess
@@ -120,11 +120,23 @@ $html.addEventListener('keyup', (event) => {
                     break;
                 case 0:
                     draw(320,70,400,70); // dead
+                    const container = document.querySelector('.container'), // get conatiner div
+                          gameOver = document.createElement('div'); // creating game-ove div
+                          
+                    gameOver.classList.add('game-over'); // add class to div 
+                    gameOver.textContent = '¡PERDISTE!'; // add text content
+
+                    container.appendChild(gameOver); // putting gameOver div into container div
+
+                    $html.removeEventListener('keyup', guessWord); // remove event listener from html
                     break;
             }
             lives--; // decrease the number of lives by 1
         }
     } 
-});
+}
+
+// adding a event listener for the html
+$html.addEventListener('keyup', guessWord);
 
 
