@@ -139,4 +139,9 @@ const guessWord = (event) => {
 // adding a event listener for the html
 $html.addEventListener('keyup', guessWord);
 
+// ------------------- beginning code for new game button and desist -------------------------
 
+const NewGame = document.querySelector('#newGame'); // get new game button
+NewGame.addEventListener('click', _=> {
+    location.reload();
+})
