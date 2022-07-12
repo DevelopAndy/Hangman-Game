@@ -78,6 +78,7 @@ const $html = document.querySelector('html'); //getting all html elements
 const guess = document.querySelectorAll('.guess'); // getting all created div
 const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
 let lives= 6; // number of lives in the game
+let guessed = []; // creating a new array of guessed letters
 
 // function to guess word and show wrong letters
 const guessWord = (event) => {
@@ -91,6 +92,19 @@ const guessWord = (event) => {
         {
             guess[i].classList.remove('invisible-word'); // removing the class from the letter
             exist = true; // the letter exist in the word to guess
+            guessed.splice(i, 0, result[i]); // prueba
+            if (result.length == guessed.length)
+            {
+                const container = document.querySelector('.container'), // get conatiner div
+                gameOver = document.createElement('div'); // creating game-ove div
+                
+                gameOver.classList.add('game-over'); // add class to div 
+                gameOver.textContent = '¡GANASTE!'; // add text content
+
+                container.appendChild(gameOver); // putting gameOver div into container div
+
+                $html.removeEventListener('keyup', guessWord); // remove event listener from html
+            }
         }
     }
 
@@ -142,6 +156,7 @@ $html.addEventListener('keyup', guessWord);
 // ------------------- beginning code for new game button and desist -------------------------
 
 const NewGame = document.querySelector('#newGame'); // get new game button
-NewGame.addEventListener('click', _=> {
-    location.reload();
-})
+NewGame.addEventListener('click', _=> {location.reload();}) //reload the game
+
+// ------------------- beginning code for when you finish the game ------------------------
+
