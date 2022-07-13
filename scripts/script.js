@@ -38,23 +38,6 @@ function randWord(array)
     return rValue;
 }
 
-// code to not repeat the words
-
-// wordGame = [];
-
-// for (let i in words)
-// { 
-//     newWord = randWord(words);
-//     while (wordGame.includes(newWord))
-//     {
-//         newWord = randWord(words);
-//     }
-    
-//     wordGame.push(newWord);
-
-//     console.log(firstWord);
-// }
-
 // ------------- beginning code for to create tags and seperate letters -------------------
 
 const hiddenWord = document.querySelector('#hidden-word'); // bringing the div were the word will go to guess
@@ -92,8 +75,11 @@ const guessWord = (event) => {
         {
             guess[i].classList.remove('invisible-word'); // removing the class from the letter
             exist = true; // the letter exist in the word to guess
-            guessed.splice(i, 0, result[i]); // prueba
-            if (result.length == guessed.length)
+
+            // code for when you win the game
+            guessed.splice(i, 0, result[i]); // adding every letter guessed to array "guessed"
+
+            if (result.length == guessed.length) // Checking if all letters are in the word to guess
             {
                 const container = document.querySelector('.container'), // get conatiner div
                 gameOver = document.createElement('div'); // creating game-ove div
@@ -157,6 +143,3 @@ $html.addEventListener('keyup', guessWord);
 
 const NewGame = document.querySelector('#newGame'); // get new game button
 NewGame.addEventListener('click', _=> {location.reload();}) //reload the game
-
-// ------------------- beginning code for when you finish the game ------------------------
-
