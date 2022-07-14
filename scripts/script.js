@@ -60,12 +60,15 @@ const guessWord = (event) => {
     {
         if (result[i].includes(inputText)) // checking if the pressed character is in the word to guess
         {
+            if (!guessed.includes(inputText)) // checking if the letter already came out
+            {
+                guessed.splice(i, 0, result[i]); // adding every letter guessed to array "guessed"
+            }
+            
             guess[i].classList.remove('invisible-word'); // removing the class from the letter
             exist = true; // the letter exist in the word to guess
 
             // code for when you win the game
-            guessed.splice(i, 0, result[i]); // adding every letter guessed to array "guessed"
-
             if (result.length == guessed.length) // Checking if all letters are in the word to guess
             {
                 const container = document.querySelector('.container'), // get conatiner div
