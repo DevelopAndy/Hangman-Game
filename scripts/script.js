@@ -25,19 +25,6 @@ draw(230,200,230,0); //pole
 draw(230,1,360,1); //ceiling
 draw(360,0,360,30); //rope
 
-//---------------------- beginning code for words --------------------
-
-// words to guess
-const words = ["caballo", "perro", "gato", "manzana", "pera", "desayuno", "huevo", "cocina", "doctor", "verano", "invierno"];
-
-// function to separate words
-function randWord(array)
-{
-    let rand = Math.random()*array.length | 0;
-    let rValue = array[rand];
-    return rValue;
-}
-
 // ------------- beginning code for to create tags and seperate letters -------------------
 
 const hiddenWord = document.querySelector('#hidden-word'); // bringing the div were the word will go to guess
