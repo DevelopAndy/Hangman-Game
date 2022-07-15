@@ -133,3 +133,5 @@ $html.addEventListener('keyup', guessWord);
 
 const NewGame = document.querySelector('#newGame'); // get new game button
 NewGame.addEventListener('click', _=> {location.reload();}) //reload the game
+
+console.log(words);
