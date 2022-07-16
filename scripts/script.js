@@ -48,7 +48,7 @@ const $html = document.querySelector('html'); //getting all html elements
 const guess = document.querySelectorAll('.guess'); // getting all created div
 const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
 let lives= 6; // number of lives in the game
-let guessed = []; // creating a new array of guessed letters
+let guessed = result; // creating a new array of guessed letters
 
 // function to guess word and show wrong letters
 const guessWord = (event) => {
@@ -60,16 +60,22 @@ const guessWord = (event) => {
     {
         if (result[i].includes(inputText)) // checking if the pressed character is in the word to guess
         {
-            if (!guessed.includes(inputText)) // checking if the letter already came out
-            {
-                guessed.splice(i, 0, result[i]); // adding every letter guessed to array "guessed"
-            }
+            // if (!guessed.includes(inputText)) // checking if the letter already came out
+            // {
+            //     guessed.push(inputText); // adding every letter guessed to array "guessed"
+            // }
+            
+            removeLetter = guessed.filter((item) => item !== inputText); //
+
+            guessed = removeLetter;
             
             guess[i].classList.remove('invisible-word'); // removing the class from the letter
             exist = true; // the letter exist in the word to guess
 
+            console.log(removeLetter);
+
             // code for when you win the game
-            if (result.length == guessed.length) // Checking if all letters are in the word to guess
+            if (guessed.length == 0) // Checking if all letters are in the word to guess
             {
                 const container = document.querySelector('.container'), // get conatiner div
                 gameOver = document.createElement('div'); // creating game-ove div
@@ -133,5 +139,3 @@ $html.addEventListener('keyup', guessWord);
 
 const NewGame = document.querySelector('#newGame'); // get new game button
 NewGame.addEventListener('click', _=> {location.reload();}) //reload the game
-
-console.log(words);
