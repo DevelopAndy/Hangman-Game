@@ -48,7 +48,7 @@ const $html = document.querySelector('html'); //getting all html elements
 const guess = document.querySelectorAll('.guess'); // getting all created div
 const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
 let lives= 6; // number of lives in the game
-let guessed = result; // creating a new array of guessed letters
+let guessed = result; // array to verify if you win the game
 
 // function to guess word and show wrong letters
 const guessWord = (event) => {
@@ -59,15 +59,10 @@ const guessWord = (event) => {
     for (let i in result) // loop for check the letter in the word to guess
     {
         if (result[i].includes(inputText)) // checking if the pressed character is in the word to guess
-        {
-            // if (!guessed.includes(inputText)) // checking if the letter already came out
-            // {
-            //     guessed.push(inputText); // adding every letter guessed to array "guessed"
-            // }
-            
-            removeLetter = guessed.filter((item) => item !== inputText); //
+        {            
+            removeLetter = guessed.filter((item) => item !== inputText); // remove guessed letter of array 'guessed'
 
-            guessed = removeLetter;
+            guessed = removeLetter; // now array 'guessed' doesn't contain the guessed letter
             
             guess[i].classList.remove('invisible-word'); // removing the class from the letter
             exist = true; // the letter exist in the word to guess
@@ -75,7 +70,7 @@ const guessWord = (event) => {
             console.log(removeLetter);
 
             // code for when you win the game
-            if (guessed.length == 0) // Checking if all letters are in the word to guess
+            if (guessed.length == 0) // When array 'guessed' is empty, then, you win the game
             {
                 const container = document.querySelector('.container'), // get conatiner div
                 gameOver = document.createElement('div'); // creating game-ove div
