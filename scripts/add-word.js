@@ -7,15 +7,18 @@ let words = ["caballo", "perro", "gato", "manzana", "pera", "desayuno", "huevo",
 buttonAddWord.addEventListener('click', (event) => {
 
     if (inputAddWord.value.length > 0) {
-        sessionStorage.setItem("words", inputAddWord.value);
+        if (sessionStorage.getItem(inputAddWord.value) == null) {
+        sessionStorage.setItem(inputAddWord.value, inputAddWord.value);
+        }
     }
 
     location = "game.html"; // open game page
 }); 
 
 // adding new words in array 'words'
-if (sessionStorage.length > 1) {
-    words.push(sessionStorage.getItem("words"));
+for (let i=0; i<sessionStorage.length; i++)
+{    
+    words.push(sessionStorage.getItem(sessionStorage.key(i)));
 }
 
 //---------------------- beginning code for words --------------------
