@@ -32,7 +32,7 @@ let dividedWord = randWord(words).split(''); // dividing the word to guess
 let result =[]; // capturing each letter of the word to guess
 
 // creating the div for the word to guess
-for (let i in dividedWord) //creating a div for each letter of the word to guess
+for (let i in dividedWord) // creating a div for each letter of the word to guess
 {
     let divLetters = document.createElement('div'); //creating the div
     divLetters.classList.add('guess', 'invisible-word'); // adding the class to the div
@@ -56,7 +56,7 @@ const guessWord = (event) => {
     const pattern = new RegExp('^[A-Z]$'); // creating a regex pattern for the keyboard
     let exist = false; // checking if letter dont exist in the word to guess
 
-    for (let i in result) // loop for check the letter in the word to guess
+    for (let i in result) // loop to check the letter in the word to guess
     {
         if (result[i].includes(inputText)) // checking if the pressed character is in the word to guess
         {            
@@ -66,8 +66,6 @@ const guessWord = (event) => {
             
             guess[i].classList.remove('invisible-word'); // removing the class from the letter
             exist = true; // the letter exist in the word to guess
-
-            console.log(removeLetter);
 
             // code for when you win the game
             if (guessed.length == 0) // When array 'guessed' is empty, then, you win the game
@@ -127,10 +125,10 @@ const guessWord = (event) => {
     } 
 }
 
-// adding a event listener for the html
+// adding an event listener for the html
 $html.addEventListener('keyup', guessWord);
 
-// ------------------- beginning code for new game button and desist -------------------------
+// ------------------- beginning code to new game button and desist -------------------------
 
 const NewGame = document.querySelector('#newGame'); // get new game button
 NewGame.addEventListener('click', _=> {location.reload();}) //reload the game
