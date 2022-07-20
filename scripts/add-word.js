@@ -17,16 +17,39 @@ buttonAddWord.addEventListener('click', (event) => {
 
 // adding new words in array 'words'
 for (let i=0; i<sessionStorage.length; i++)
-{    
-    words.push(sessionStorage.getItem(sessionStorage.key(i)));
+{   
+    if (isNaN(sessionStorage.key(i)) == true)
+    {
+        words.push(sessionStorage.getItem(sessionStorage.key(i)));
+    }
 }
 
 //---------------------- beginning code for words --------------------
 
 // function to separate words
+
 function randWord(array)
 {
     let rand = Math.random()*array.length | 0;
+
+    if (!(rand in sessionStorage))
+    {
+        sessionStorage.setItem(rand, rand);
+    }
+    else 
+    {
+        let i = 0;
+        while (rand in sessionStorage && (i < array.length))
+        {
+            rand = Math.random()*array.length | 0;
+            i++;
+            if (i === array.length)
+            {
+                alert('Ya no hay más palabras, ve al inicio y añade nuevas palabras');
+            }
+        }
+    }
+    
     let rValue = array[rand];
     return rValue;
 }
