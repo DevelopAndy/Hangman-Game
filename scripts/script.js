@@ -7,6 +7,7 @@ function drawHead()
 {
     context.beginPath();
     context.arc(360,50,20,0,2*Math.PI);
+    context.strokeStyle = '#576F72';
     context.stroke();
 }      
 
@@ -17,6 +18,7 @@ function draw(xi,yi,xf,yf)
     context.lineWidth = 3;
     context.moveTo(xi, yi);
     context.lineTo(xf, yf);
+    context.strokeStyle = '#576F72';
     context.stroke();
 }
 
