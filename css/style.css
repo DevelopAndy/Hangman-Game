@@ -1,5 +1,5 @@
 .container {
-    background-color: #F0EBE3;
+    background-color: #576F72;
     height: 100vh;
 }
 
@@ -24,10 +24,10 @@
     position: absolute;
     top: -5%;
     left: 2%;
-    color:#576F72;
+    color: #d2ccc3;
     font-size: 3em;
     padding: 0.2em;
-    border: solid 2px #576F72;
+    border: solid 2px #d2ccc3;
     border-radius: 20%;
 }
 
@@ -48,11 +48,12 @@
     width: 317px;
     height: 80px;
     padding: 20px;
-    color: white;
+    color: #d2ccc3;
+    font-weight: 600;
     font-size: 18px;
     text-decoration: none;
     border-radius: 24px;
-    background: #576F72;
+    background: #3c3c3c;
     margin-bottom: 20px;
 }
 
@@ -65,7 +66,7 @@
     width: 280px;
     height: 30px;
     padding: 24px;
-    color: #576F72;
+    color: #d2ccc3;
     font-size: 18px;
     text-decoration:none;
     outline: solid 1px;
@@ -85,18 +86,18 @@
     border: none;
     outline: none;
     font-size: 32px;
-    color: #576F72;
+    color: #d2ccc3;
 }
 
 .input-add-word::placeholder {
-    color:#576F72;
+    color:#d2ccc3;
 }
 
 .max {
     position: absolute;
     top: 60%;
     left: 26%;
-    color: #576F72;
+    color: #d2ccc3;
 }
 
 .buttons-add {
@@ -115,8 +116,8 @@
     height: 67px;
     border-radius: 24px;
     padding: 24px;
-    color: white;
-    background-color: #576F72;
+    color: #d2ccc3;
+    background-color: #3c3c3c;
     border: none;
     margin-right: 20px;
     cursor: pointer;
@@ -129,14 +130,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #576F72;
-    outline: solid 1px #576F72;
+    color: #d2ccc3;
+    outline: solid 1px #d2ccc3;
     border-radius: 24px;
     text-decoration: none;
 }
 
 #cancel:visited {
-    color: #576F72;
+    color: #d2ccc3;
 }
 
 /* estilos para la página del juego */
@@ -166,8 +167,8 @@
     width: 50px;
     text-align: center;
     margin: 0 2% 4% 0;
-    color: #576F72;
-    border-bottom: solid 1px #576F72;  
+    color: #d2ccc3;
+    border-bottom: solid 1px #d2ccc3;  
     user-select: none;
 }
 
@@ -191,7 +192,7 @@
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    color: #576F72;
+    color: #d2ccc3;
     letter-spacing: 0.7em;
     top: 18%;
     font-size: 30px;
@@ -211,8 +212,9 @@
     height: 67px;
     border-radius: 24px;
     padding: 24px;
-    color: white;
-    background-color: #576F72;
+    font-weight: 600;
+    color: #d2ccc3;
+    background-color: #3c3c3c;
     border: none;
     margin-right: 20px;
     cursor: pointer;
@@ -226,11 +228,38 @@
     justify-content: center;
     align-items: center;
     border-radius: 24px;
-    outline: solid 1px #576F72;
-    color: #576F72;
+    outline: solid 1px #d2ccc3;
+    color: #d2ccc3;
     text-decoration: none;
 }
 
 #desist:visited {
-    color: #576F72;
+    color: #d2ccc3;
+}
+
+/* ------------------- Responsive ------------------- */
+
+@media (max-width: 768px) {
+
+    .logo {
+        top: 1%;
+        left: 4%;
+    }
+
+    #canvas {
+        top: 22%;
+    }
+
+    #hidden-word {
+        top: 50%;
+    }
+
+    #fail-word {
+        top: 50%;
+    }
+
+    .buttons-game {
+        top: 60%;
+    }
+
 }
