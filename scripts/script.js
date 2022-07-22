@@ -3,10 +3,10 @@ const canvas = document.querySelector('canvas'),
       context = canvas.getContext('2d');
 
 //draw head
-function drawHead()
+function drawHead(x,y,r)
 {
     context.beginPath();
-    context.arc(360,50,20,0,2*Math.PI);
+    context.arc(x,y,r,0,2*Math.PI);
     context.strokeStyle = '#d2ccc3';
     context.stroke();
 }      
@@ -22,10 +22,27 @@ function draw(xi,yi,xf,yf)
     context.stroke();
 }
 
-draw(200,199,400,199); //base
-draw(230,200,230,0); //pole
-draw(230,1,360,1); //ceiling
-draw(360,0,360,30); //rope
+// code to change the size of the drawing depending on the size of the screen
+const mediumBp = matchMedia("(max-width:768px)");
+const shortBp = matchMedia("(max-width:375px)");
+
+if (mediumBp.matches == false) 
+{
+    draw(200,199,400,199); //base
+    draw(230,200,230,0); //pole
+    draw(230,1,360,1); //ceiling
+    draw(360,0,360,30); //rope
+}
+else
+{
+    canvas.style.height = "400px";
+    canvas.style.width = "600px";
+
+    draw(160,199,440,199); //base
+    draw(220,200,220,0); //pole
+    draw(220,1,400,1); //ceiling
+    draw(400,0,400,30); //rope
+}
 
 // ------------- beginning code for to create tags and seperate letters -------------------
 
@@ -46,7 +63,7 @@ for (let i in dividedWord) // creating a div for each letter of the word to gues
 
 // ------------- beginning code for incorrect letters and for drawing body parts --------------
 
-const $html = document.querySelector('html'); //getting all html elements
+const $html = document.querySelector('html'); // getting all html elements
 const guess = document.querySelectorAll('.guess'); // getting all created div
 const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
 let lives= 6; // number of lives in the game
@@ -92,25 +109,75 @@ const guessWord = (event) => {
             failWord.textContent += inputText; // writing the letter failed in the div
             switch (lives){ // drawing body parts according to lives 
                 case 6:
-                    drawHead(); // draw head
+                    if (mediumBp.matches == false)
+                    {
+                        drawHead(360,50,20); // draw head
+                    }
+                    else
+                    {
+                        drawHead(400,50,20); // draw head
+                    }
+                    
                     break;
                 case 5:
-                    draw(360,70,360,130); // draw body
+                    if (mediumBp.matches == false)
+                    {
+                        draw(360,70,360,130); // draw body
+                    }
+                    else
+                    {
+                        draw(400,70,400,140); // draw body
+                    }
                     break;
                 case 4:
-                    draw(360,130,380,170); // draw right leg
+                    if (mediumBp.matches == false)
+                    {
+                        draw(360,130,380,170); // draw right leg
+                    }
+                    else
+                    {
+                        draw(400,140,430,170); // draw right leg
+                    }
                     break;
                 case 3:
-                    draw(360,130,340,170); // draw left leg
+                    if (mediumBp.matches == false)
+                    {
+                        draw(360,130,340,170); // draw left leg
+                    }
+                    else
+                    {
+                        draw(400,140,370,170); // draw left leg
+                    }
                     break;
                 case 2:
-                    draw(360,80,380,120); // draw right arm
+                    if (mediumBp.matches == false)
+                    {
+                        draw(360,80,380,120); // draw right arm
+                    }
+                    else
+                    {
+                        draw(400,80,420,120); // draw right arm
+                    }
                     break;
                 case 1:
-                    draw(360,80,340,120); // draw left arm
+                    if (mediumBp.matches == false)
+                    {
+                        draw(360,80,340,120); // draw left arm
+                    }
+                    else
+                    {
+                        draw(400,80,380,120); // draw left arm
+                    }
                     break;
                 case 0:
-                    draw(320,70,400,70); // dead
+                    if (mediumBp.matches == false)
+                    {
+                        draw(320,70,400,70); // dead
+                    }
+                    else
+                    {
+                        draw(360,70,440,70); // dead
+                    }
                     const container = document.querySelector('.container'), // get conatiner div
                           gameOver = document.createElement('div'); // creating game-ove div
                           

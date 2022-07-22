@@ -32,12 +32,12 @@
 }
 
 .buttons-ini {
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 28%;
 }
 
 .btn-start {
@@ -54,11 +54,10 @@
     text-decoration: none;
     border-radius: 24px;
     background: #3c3c3c;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .btn-add {
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,7 +70,6 @@
     text-decoration:none;
     outline: solid 1px;
     border-radius: 24px;
-    top: 110%;
 }
 
 /* estilos para la página añadir palabra */
@@ -241,25 +239,44 @@
 
 @media (max-width: 768px) {
 
+    /* ------------------ index --------------------- */
+
+    
+    /* ---------------- add word page --------------- */
+    .input-add-word {
+        top: 25%;
+        left: 7%;
+    }
+
+    .max {
+        top: 70%;
+        left: 8%;
+    }
+
+    .buttons-add {
+        top: 70%;
+    }
+
+    /* ---------------- game page ------------------- */
     .logo {
         top: 1%;
         left: 4%;
     }
 
     #canvas {
-        top: 22%;
+        top: 20%;
     }
 
     #hidden-word {
-        top: 50%;
+        top: 30%;
     }
 
     #fail-word {
-        top: 50%;
+        top: 30%;
     }
 
     .buttons-game {
-        top: 60%;
+        top: 42%;
     }
 
 }
