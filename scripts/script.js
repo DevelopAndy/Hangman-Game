@@ -26,23 +26,41 @@ function draw(xi,yi,xf,yf)
 const mediumBp = matchMedia("(max-width:768px)");
 const shortBp = matchMedia("(max-width:375px)");
 
-if (mediumBp.matches == false) 
-{
-    draw(200,199,400,199); //base
-    draw(230,200,230,0); //pole
-    draw(230,1,360,1); //ceiling
-    draw(360,0,360,30); //rope
-}
-else
-{
-    canvas.style.height = "400px";
-    canvas.style.width = "600px";
+mediumBp.addListener(changeSize);
+shortBp.addListener(changeSize);
 
-    draw(160,199,440,199); //base
-    draw(220,200,220,0); //pole
-    draw(220,1,400,1); //ceiling
-    draw(400,0,400,30); //rope
+function changeSize()
+{
+    if (shortBp.matches == true) 
+    {
+        canvas.style.height = "375px";
+        canvas.style.width = "375px";
+
+        draw(60,199,530,199); //base
+        draw(150,200,150,0); //pole
+        draw(150,1,450,1); //ceiling
+        draw(450,0,450,30); //rope
+    }
+    else if (mediumBp.matches == true)
+    {
+        canvas.style.height = "400px";
+        canvas.style.width = "600px";
+
+        draw(160,199,440,199); //base
+        draw(220,200,220,0); //pole
+        draw(220,1,400,1); //ceiling
+        draw(400,0,400,30); //rope
+    }
+    else
+    {
+        draw(200,199,400,199); //base
+        draw(230,200,230,0); //pole
+        draw(230,1,360,1); //ceiling
+        draw(360,0,360,30); //rope
+    }
 }
+
+changeSize();
 
 // ------------- beginning code for to create tags and seperate letters -------------------
 
@@ -109,74 +127,102 @@ const guessWord = (event) => {
             failWord.textContent += inputText; // writing the letter failed in the div
             switch (lives){ // drawing body parts according to lives 
                 case 6:
-                    if (mediumBp.matches == false)
+                    if (shortBp.matches == true)
                     {
-                        drawHead(360,50,20); // draw head
+                        drawHead(450,55,25); // draw head
+                    }
+                    else if (mediumBp.matches == true)
+                    {
+                        drawHead(400,50,20); // draw head
                     }
                     else
                     {
-                        drawHead(400,50,20); // draw head
+                        drawHead(360,50,20); // draw head
                     }
                     
                     break;
                 case 5:
-                    if (mediumBp.matches == false)
+                    if (shortBp.matches == true)
                     {
-                        draw(360,70,360,130); // draw body
+                        draw(450,80,450,150); // draw body
                     }
-                    else
+                    else if (mediumBp.matches == true)
                     {
                         draw(400,70,400,140); // draw body
                     }
+                    else
+                    {
+                        draw(360,70,360,130); // draw body
+                    }
                     break;
                 case 4:
-                    if (mediumBp.matches == false)
+                    if (shortBp.matches == true)
+                    {
+                        draw(450,150,480,190); // draw right leg
+                    }
+                    else if (mediumBp.matches == true)
+                    {
+                        draw(400,140,430,170); // draw right leg                        
+                    }
+                    else
                     {
                         draw(360,130,380,170); // draw right leg
                     }
-                    else
-                    {
-                        draw(400,140,430,170); // draw right leg
-                    }
                     break;
                 case 3:
-                    if (mediumBp.matches == false)
+                    if (shortBp.matches == true)
                     {
-                        draw(360,130,340,170); // draw left leg
+                        draw(450,150,420,190); // draw left leg
+                    }
+                    else if (mediumBp.matches == true)
+                    {
+                        draw(400,140,370,170); // draw left leg                        
                     }
                     else
                     {
-                        draw(400,140,370,170); // draw left leg
+                        draw(360,130,340,170); // draw left leg   
                     }
                     break;
                 case 2:
-                    if (mediumBp.matches == false)
+                    if (shortBp.matches == true)
                     {
-                        draw(360,80,380,120); // draw right arm
+                        draw(450,90,420,140); // draw right arm
                     }
-                    else
+                    else if (mediumBp.matches == true)
                     {
                         draw(400,80,420,120); // draw right arm
                     }
+                    else
+                    {
+                        draw(360,80,380,120); // draw right arm
+                    }
                     break;
                 case 1:
-                    if (mediumBp.matches == false)
+                    if (shortBp.matches == true)
+                    {
+                        draw(450,90,480,140); // draw left arm
+                    }
+                    else if (mediumBp.matches == true)
+                    {
+                        draw(400,80,380,120); // draw left arm                        
+                    }
+                    else
                     {
                         draw(360,80,340,120); // draw left arm
                     }
-                    else
-                    {
-                        draw(400,80,380,120); // draw left arm
-                    }
                     break;
                 case 0:
-                    if (mediumBp.matches == false)
+                    if (shortBp.matches == true)
                     {
-                        draw(320,70,400,70); // dead
+                        draw(400,80,500,80); // dead
+                    }
+                    else if (mediumBp.matches == true)
+                    {
+                        draw(360,70,440,70); // dead                        
                     }
                     else
                     {
-                        draw(360,70,440,70); // dead
+                        draw(320,70,400,70); // dead
                     }
                     const container = document.querySelector('.container'), // get conatiner div
                           gameOver = document.createElement('div'); // creating game-ove div
