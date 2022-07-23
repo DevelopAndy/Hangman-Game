@@ -279,12 +279,50 @@
 }
 
 @media (max-width: 375px) {
-    .container {
-        height: 100vh;
+
+    /* ---------------- add word page --------------- */
+    .buttons-add {
+        flex-direction: column;
+        top: 70%;
+    }
+
+    #save {
+        margin-bottom: 15px;
+    }
+
+    /* ---------------- game page ------------------- */
+    .game-over {
+        text-align: center;
+        font-size: 1.5em;
+        letter-spacing: 0.7em;
     }
 
     .logo {
-        top: 0%;
-        font-size: 2em;
+        top: -1%;
+        font-size: 1.5em;
+    }
+
+    #canvas {
+        top: 10%;
+    }
+
+    #hidden-word {
+        top: 18%;
+    }
+
+    #fail-word {
+        top: 18%;
+    }
+    
+    .buttons-game {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 23%;
+    }
+
+    #newGame {
+        margin-right: 0;
+        margin-bottom: 15px;
     }
 }
