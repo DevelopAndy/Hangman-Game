@@ -81,7 +81,7 @@ for (let i in dividedWord) // creating a div for each letter of the word to gues
 
 // ------------- beginning code for incorrect letters and for drawing body parts --------------
 
-const $html = document.querySelector('html'); // getting all html elements
+const input = document.querySelector('#keyboard'); // getting all html elements
 const guess = document.querySelectorAll('.guess'); // getting all created div
 const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
 let lives= 6; // number of lives in the game
@@ -108,14 +108,14 @@ const guessWord = (event) => {
             if (guessed.length == 0) // When array 'guessed' is empty, then, you win the game
             {
                 const container = document.querySelector('.container'), // get conatiner div
-                gameOver = document.createElement('div'); // creating game-ove div
+                gameOver = document.createElement('div'); // creating game-over div
                 
                 gameOver.classList.add('game-over'); // add class to div 
                 gameOver.textContent = '¡GANASTE!'; // add text content
 
                 container.appendChild(gameOver); // putting gameOver div into container div
 
-                $html.removeEventListener('keyup', guessWord); // remove event listener from html
+                input.removeEventListener('keyup', guessWord); // remove event listener from html
             }
         }
     }
@@ -232,7 +232,7 @@ const guessWord = (event) => {
 
                     container.appendChild(gameOver); // putting gameOver div into container div
 
-                    $html.removeEventListener('keyup', guessWord); // remove event listener from html
+                    input.removeEventListener('keyup', guessWord); // remove event listener from html
                     break;
             }
             lives--; // decrease the number of lives by 1
@@ -241,7 +241,7 @@ const guessWord = (event) => {
 }
 
 // adding an event listener for the html
-$html.addEventListener('keyup', guessWord);
+input.addEventListener('keyup', guessWord);
 
 // ------------------- beginning code to new game button and desist -------------------------
 
