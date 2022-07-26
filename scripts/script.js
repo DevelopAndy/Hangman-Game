@@ -24,18 +24,15 @@ function draw(xi,yi,xf,yf)
 
 // code to change the size of the drawing depending on the size of the screen
 const mediumBp = matchMedia("(max-width:768px)");
-const shortBp = matchMedia("(max-width:375px)");
+const shortBp = matchMedia("(max-width:400px)");
 
 const keyboard = document.querySelector("#keyboard");
-
-mediumBp.addListener(changeSize);
-shortBp.addListener(changeSize);
 
 function changeSize()
 {
     if (shortBp.matches == true) 
     {
-        canvas.style.height = "375px";
+        canvas.style.height = "250px";
         canvas.style.width = "375px";
 
         draw(60,199,530,199); //base
@@ -66,6 +63,8 @@ function changeSize()
     }
 }
 
+mediumBp.addListener(changeSize);
+shortBp.addListener(changeSize);
 changeSize();
 
 // ------------- beginning code for to create tags and seperate letters -------------------
