@@ -99,8 +99,8 @@ const guessWord = (event) => {
     let exist = false; // checking if letter dont exist in the word to guess
 
     for (let i in result) // loop to check the letter in the word to guess
-    {
-        if (result[i].includes(inputText)) // checking if the pressed character is in the word to guess
+    {        
+        if (result[i].includes(inputText) || result[i].includes(keyboard.textContent.value)) // checking if the pressed character is in the word to guess
         {            
             removeLetter = guessed.filter((item) => item !== inputText); // remove guessed letter of array 'guessed'
 
