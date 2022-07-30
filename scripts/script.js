@@ -25,12 +25,25 @@ function draw(xi,yi,xf,yf)
 // code to change the size of the drawing depending on the size of the screen
 const mediumBp = matchMedia("(max-width:768px)");
 const shortBp = matchMedia("(max-width:400px)");
+const smallBp = matchMedia("(max-height:450px)");
 
 const keyboard = document.querySelector("#keyboard");
 
 function changeSize()
 {
-    if (shortBp.matches == true) 
+    if (smallBp.matches == true)
+    {
+        canvas.style.height = "100px";
+        canvas.style.width = "200px";
+
+        draw(60,199,530,199); //base
+        draw(150,200,150,0); //pole
+        draw(150,1,450,1); //ceiling
+        draw(450,0,450,30); //rope
+
+        keyboard.classList.remove("invisible");
+    }
+    else if (shortBp.matches == true) 
     {
         canvas.style.height = "250px";
         canvas.style.width = "375px";

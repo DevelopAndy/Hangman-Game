@@ -300,6 +300,10 @@
 
 }
 
+@media (max-height: 450px) {
+
+}
+
 @media (max-width: 400px) {
 
     /* ---------------- add word page --------------- */
