@@ -104,36 +104,67 @@ const guess = document.querySelectorAll('.guess'); // getting all created div
 const failWord = document.querySelector('#fail-word'); // getting the div were the incorrect letter will go 
 let lives= 6; // number of lives in the game
 let guessed = result; // array to verify if you win the game
+let removeLetter = [];
 
 // function to guess word and show wrong letters
 const guessWord = (event) => {
     let inputText = (event.key).toLocaleUpperCase(); // capturing the keyboard
+    let keyboardContent = keyboard.value.charAt(keyboard.value.length - 1).toLocaleUpperCase()
     const pattern = new RegExp('^[A-Z]$'); // creating a regex pattern for the keyboard
     let exist = false; // checking if letter dont exist in the word to guess
 
     for (let i in result) // loop to check the letter in the word to guess
-    {        
-        if (result[i].includes(inputText) || result[i].includes((keyboard.value.charAt(keyboard.value.length - 1).toLocaleUpperCase()))) // checking if the pressed character is in the word to guess
-        {            
-            removeLetter = guessed.filter((item) => item !== inputText); // remove guessed letter of array 'guessed'
-
-            guessed = removeLetter; // now array 'guessed' doesn't contain the guessed letter
-            
-            guess[i].classList.remove('invisible-word'); // removing the class from the letter
-            exist = true; // the letter exist in the word to guess
-
-            // code for when you win the game
-            if (guessed.length == 0) // When array 'guessed' is empty, then, you win the game
+    {
+        if (mediumBp.matches == true || shortBp.matches == true || smallBp.matches == true)
+        {
+            if (result[i].includes(keyboardContent))
             {
-                const container = document.querySelector('.container'), // get conatiner div
-                gameOver = document.createElement('div'); // creating game-over div
+                removeLetter = guessed.filter((item) => item !== keyboardContent); // remove guessed letter of array 'guessed'
+
+                guessed = removeLetter; // now array 'guessed' doesn't contain the guessed letter
+            
+                guess[i].classList.remove('invisible-word'); // removing the class from the letter
+                exist = true; // the letter exist in the word to guess
+
+                // code for when you win the game
+                if (guessed.length == 0) // When array 'guessed' is empty, then, you win the game
+                {
+                    const container = document.querySelector('.container'), // get conatiner div
+                    gameOver = document.createElement('div'); // creating game-over div
+                    
+                    gameOver.classList.add('game-over'); // add class to div 
+                    gameOver.textContent = '¡GANASTE!'; // add text content
+
+                    container.appendChild(gameOver); // putting gameOver div into container div
+
+                    $html.removeEventListener('keyup', guessWord); // remove event listener from html
+                }
+            }
+        }
+        else
+        {
+            if (result[i].includes(inputText)) // checking if the pressed character is in the word to guess
+            {        
+                removeLetter = guessed.filter((item) => item !== inputText); // remove guessed letter of array 'guessed'
+
+                guessed = removeLetter; // now array 'guessed' doesn't contain the guessed letter
                 
-                gameOver.classList.add('game-over'); // add class to div 
-                gameOver.textContent = '¡GANASTE!'; // add text content
+                guess[i].classList.remove('invisible-word'); // removing the class from the letter
+                exist = true; // the letter exist in the word to guess
 
-                container.appendChild(gameOver); // putting gameOver div into container div
+                // code for when you win the game
+                if (guessed.length == 0) // When array 'guessed' is empty, then, you win the game
+                {
+                    const container = document.querySelector('.container'), // get conatiner div
+                    gameOver = document.createElement('div'); // creating game-over div
+                    
+                    gameOver.classList.add('game-over'); // add class to div 
+                    gameOver.textContent = '¡GANASTE!'; // add text content
 
-                $html.removeEventListener('keyup', guessWord); // remove event listener from html
+                    container.appendChild(gameOver); // putting gameOver div into container div
+
+                    $html.removeEventListener('keyup', guessWord); // remove event listener from html
+                }
             }
         }
     }
