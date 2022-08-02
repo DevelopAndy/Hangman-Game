@@ -113,7 +113,7 @@ const guessWord = (event) => {
 
     for (let i in result) // loop to check the letter in the word to guess
     {        
-        if (result[i].includes(inputText) || result[i].includes(keyboard.textContent.value)) // checking if the pressed character is in the word to guess
+        if (result[i].includes(inputText) || result[i].includes((keyboard.value.charAt(keyboard.value.length - 1).toLocaleUpperCase()))) // checking if the pressed character is in the word to guess
         {            
             removeLetter = guessed.filter((item) => item !== inputText); // remove guessed letter of array 'guessed'
 
