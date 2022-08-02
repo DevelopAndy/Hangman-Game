@@ -300,10 +300,6 @@
 
 }
 
-@media (max-height: 450px) {
-
-}
-
 @media (max-width: 400px) {
 
     /* ---------------- add word page --------------- */
@@ -354,5 +350,47 @@
     #newGame {
         margin-right: 0;
         margin-bottom: 15px;
+    }
+}
+
+@media (max-height: 450px) {
+
+    /* ---------------- add word page --------------- */
+
+    .max {
+        top: 50%;
+    }
+
+    .buttons-add {
+        top: 50%;
+    }
+
+    /* ---------------- game page ------------------- */
+    .guess {
+        height: 10px;
+        width: 30px;
+        font-size: 0.4em;
+    }
+
+    #fail-word {
+        font-size: 1.4em;
+    }
+
+    #keyboard {
+        top: 52%;
+    }
+
+    #newGame {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: 40px;
+    }
+
+    #desist {
+        width: 246px;
+        height: 36px;
     }
 }
