@@ -171,121 +171,241 @@ const guessWord = (event) => {
 
     if (exist == false) //if the letter is not in the word to guess
     {
-        if (pattern.test(inputText)) // checking if the pressed character is in the regex pattern
+        if (mediumBp.matches == true || shortBp.matches == true || smallBp.matches == true)
         {
-            failWord.textContent += inputText; // writing the letter failed in the div
-            switch (lives){ // drawing body parts according to lives 
-                case 6:
-                    if (shortBp.matches == true)
-                    {
-                        drawHead(450,55,25); // draw head
-                    }
-                    else if (mediumBp.matches == true)
-                    {
-                        drawHead(400,50,20); // draw head
-                    }
-                    else
-                    {
-                        drawHead(360,50,20); // draw head
-                    }
-                    
-                    break;
-                case 5:
-                    if (shortBp.matches == true)
-                    {
-                        draw(450,80,450,150); // draw body
-                    }
-                    else if (mediumBp.matches == true)
-                    {
-                        draw(400,70,400,140); // draw body
-                    }
-                    else
-                    {
-                        draw(360,70,360,130); // draw body
-                    }
-                    break;
-                case 4:
-                    if (shortBp.matches == true)
-                    {
-                        draw(450,150,480,190); // draw right leg
-                    }
-                    else if (mediumBp.matches == true)
-                    {
-                        draw(400,140,430,170); // draw right leg                        
-                    }
-                    else
-                    {
-                        draw(360,130,380,170); // draw right leg
-                    }
-                    break;
-                case 3:
-                    if (shortBp.matches == true)
-                    {
-                        draw(450,150,420,190); // draw left leg
-                    }
-                    else if (mediumBp.matches == true)
-                    {
-                        draw(400,140,370,170); // draw left leg                        
-                    }
-                    else
-                    {
-                        draw(360,130,340,170); // draw left leg   
-                    }
-                    break;
-                case 2:
-                    if (shortBp.matches == true)
-                    {
-                        draw(450,90,420,140); // draw right arm
-                    }
-                    else if (mediumBp.matches == true)
-                    {
-                        draw(400,80,420,120); // draw right arm
-                    }
-                    else
-                    {
-                        draw(360,80,380,120); // draw right arm
-                    }
-                    break;
-                case 1:
-                    if (shortBp.matches == true)
-                    {
-                        draw(450,90,480,140); // draw left arm
-                    }
-                    else if (mediumBp.matches == true)
-                    {
-                        draw(400,80,380,120); // draw left arm                        
-                    }
-                    else
-                    {
-                        draw(360,80,340,120); // draw left arm
-                    }
-                    break;
-                case 0:
-                    if (shortBp.matches == true)
-                    {
-                        draw(400,80,500,80); // dead
-                    }
-                    else if (mediumBp.matches == true)
-                    {
-                        draw(360,70,440,70); // dead                        
-                    }
-                    else
-                    {
-                        draw(320,70,400,70); // dead
-                    }
-                    const container = document.querySelector('.container'), // get conatiner div
-                          gameOver = document.createElement('div'); // creating game-ove div
-                          
-                    gameOver.classList.add('game-over'); // add class to div 
-                    gameOver.textContent = '¡PERDISTE!'; // add text content
-
-                    container.appendChild(gameOver); // putting gameOver div into container div
-
-                    $html.removeEventListener('keyup', guessWord); // remove event listener from html
-                    break;
+            if (pattern.test(keyboardContent)) // checking if the pressed character is in the regex pattern
+            {
+                failWord.textContent += keyboardContent; // writing the letter failed in the div
+                switch (lives){ // drawing body parts according to lives 
+                    case 6:
+                        if (shortBp.matches == true)
+                        {
+                            drawHead(450,55,25); // draw head
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            drawHead(400,50,20); // draw head
+                        }
+                        else
+                        {
+                            drawHead(360,50,20); // draw head
+                        }
+                        
+                        break;
+                    case 5:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,80,450,150); // draw body
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,70,400,140); // draw body
+                        }
+                        else
+                        {
+                            draw(360,70,360,130); // draw body
+                        }
+                        break;
+                    case 4:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,150,480,190); // draw right leg
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,140,430,170); // draw right leg                        
+                        }
+                        else
+                        {
+                            draw(360,130,380,170); // draw right leg
+                        }
+                        break;
+                    case 3:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,150,420,190); // draw left leg
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,140,370,170); // draw left leg                        
+                        }
+                        else
+                        {
+                            draw(360,130,340,170); // draw left leg   
+                        }
+                        break;
+                    case 2:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,90,420,140); // draw right arm
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,80,420,120); // draw right arm
+                        }
+                        else
+                        {
+                            draw(360,80,380,120); // draw right arm
+                        }
+                        break;
+                    case 1:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,90,480,140); // draw left arm
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,80,380,120); // draw left arm                        
+                        }
+                        else
+                        {
+                            draw(360,80,340,120); // draw left arm
+                        }
+                        break;
+                    case 0:
+                        if (shortBp.matches == true)
+                        {
+                            draw(400,80,500,80); // dead
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(360,70,440,70); // dead                        
+                        }
+                        else
+                        {
+                            draw(320,70,400,70); // dead
+                        }
+                        const container = document.querySelector('.container'), // get conatiner div
+                              gameOver = document.createElement('div'); // creating game-ove div
+                              
+                        gameOver.classList.add('game-over'); // add class to div 
+                        gameOver.textContent = '¡PERDISTE!'; // add text content
+    
+                        container.appendChild(gameOver); // putting gameOver div into container div
+    
+                        $html.removeEventListener('keyup', guessWord); // remove event listener from html
+                        break;
+                }
             }
-            lives--; // decrease the number of lives by 1
         }
+        else
+        {        
+            if (pattern.test(inputText)) // checking if the pressed character is in the regex pattern
+            {
+                failWord.textContent += inputText; // writing the letter failed in the div
+                switch (lives){ // drawing body parts according to lives 
+                    case 6:
+                        if (shortBp.matches == true)
+                        {
+                            drawHead(450,55,25); // draw head
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            drawHead(400,50,20); // draw head
+                        }
+                        else
+                        {
+                            drawHead(360,50,20); // draw head
+                        }
+                        
+                        break;
+                    case 5:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,80,450,150); // draw body
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,70,400,140); // draw body
+                        }
+                        else
+                        {
+                            draw(360,70,360,130); // draw body
+                        }
+                        break;
+                    case 4:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,150,480,190); // draw right leg
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,140,430,170); // draw right leg                        
+                        }
+                        else
+                        {
+                            draw(360,130,380,170); // draw right leg
+                        }
+                        break;
+                    case 3:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,150,420,190); // draw left leg
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,140,370,170); // draw left leg                        
+                        }
+                        else
+                        {
+                            draw(360,130,340,170); // draw left leg   
+                        }
+                        break;
+                    case 2:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,90,420,140); // draw right arm
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,80,420,120); // draw right arm
+                        }
+                        else
+                        {
+                            draw(360,80,380,120); // draw right arm
+                        }
+                        break;
+                    case 1:
+                        if (shortBp.matches == true)
+                        {
+                            draw(450,90,480,140); // draw left arm
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(400,80,380,120); // draw left arm                        
+                        }
+                        else
+                        {
+                            draw(360,80,340,120); // draw left arm
+                        }
+                        break;
+                    case 0:
+                        if (shortBp.matches == true)
+                        {
+                            draw(400,80,500,80); // dead
+                        }
+                        else if (mediumBp.matches == true)
+                        {
+                            draw(360,70,440,70); // dead                        
+                        }
+                        else
+                        {
+                            draw(320,70,400,70); // dead
+                        }
+                        const container = document.querySelector('.container'), // get conatiner div
+                            gameOver = document.createElement('div'); // creating game-ove div
+                            
+                        gameOver.classList.add('game-over'); // add class to div 
+                        gameOver.textContent = '¡PERDISTE!'; // add text content
+
+                        container.appendChild(gameOver); // putting gameOver div into container div
+
+                        $html.removeEventListener('keyup', guessWord); // remove event listener from html
+                        break;
+                }
+            }
+        }
+        lives--; // decrease the number of lives by 1
     } 
 }
 
