@@ -25,7 +25,7 @@ function draw(xi,yi,xf,yf)
 // code to change the size of the drawing depending on the size of the screen
 const mediumBp = matchMedia("(max-width:768px)");
 const shortBp = matchMedia("(max-width:400px)");
-const smallBp = matchMedia("(max-height:450px)");
+const smallBp = matchMedia("(max-height:500px)");
 
 const keyboard = document.querySelector("#keyboard");
 
