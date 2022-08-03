@@ -78,6 +78,7 @@ function changeSize()
 
 mediumBp.addListener(changeSize);
 shortBp.addListener(changeSize);
+smallBp.addListener(changeSize);
 changeSize();
 
 // ------------- beginning code for to create tags and seperate letters -------------------
