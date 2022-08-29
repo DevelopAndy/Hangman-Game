@@ -1,6 +1,6 @@
 const inputAddWord = document.querySelector('.input-add-word'); // get input for add words
 const buttonAddWord = document.querySelector('#save'); // get button for save words
-let words = ["caballo", "perro", "gato", "manzana", "pera", "desayuno", "huevo", "cocina", "doctor", "verano", "invierno", "vaso", "hormiga", "pantalon", "codigo", "abejas", "perdon", "Dios", "pereza", "sandwich", "pepino", "tuberculo", "persona", "frances", "torre", "maravilla", "maiz", "prensa"]; // words to guess
+let words = ["caballo", "perro", "gato", "manzana", "pera", "desayuno", "huevo", "cocina", "doctor", "verano", "invierno", "vaso", "hormiga", "pantalon", "codigo", "abejas", "perdon", "Dios", "pereza", "sandwich", "pepino", "tuberculo", "persona", "frances", "torre", "maravilla", "maiz", "prensa", "hola"]; // words to guess
 
 
 // saving new words in sessionstorage
